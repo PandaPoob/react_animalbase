@@ -24,6 +24,7 @@ tbody tr:nth-child(even) td {
 th {
   text-align: left;
   padding-right: 0.5rem;
+  cursor: pointer;
 }
 
 td {
