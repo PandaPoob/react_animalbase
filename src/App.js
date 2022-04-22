@@ -69,7 +69,7 @@ function App() {
         <tbody>
           {filteredAnimals.map((animal) => {
             return (
-              <tr>
+              <tr key={animal.name}>
                 <td>{animal.name}</td>
                 <td>{animal.type}</td>
                 <td>{animal.descrip}</td>
