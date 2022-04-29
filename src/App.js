@@ -1,6 +1,7 @@
 import data from "./animals.json";
 import React, { useState } from "react";
 import ToggleCell from "./ToggleCell";
+import Tbody from "./components/Tbody";
 
 function clean(arr) {
   return arr.map((animal) => {
@@ -16,7 +17,7 @@ function clean(arr) {
 
 function App() {
   const animals = clean(data);
-  console.log(animals);
+  //console.log(animals);
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("name");
   const [sortDir, setSortDir] = useState("asc");
@@ -43,6 +44,12 @@ function App() {
             <ToggleCell
               setSort={setSort}
               setSortDir={setSortDir}
+              sortKey="star"
+              title="Star"
+            />
+            <ToggleCell
+              setSort={setSort}
+              setSortDir={setSortDir}
               sortKey="name"
               title="Name"
             />
@@ -66,18 +73,7 @@ function App() {
             />
           </tr>
         </thead>
-        <tbody>
-          {filteredAnimals.map((animal) => {
-            return (
-              <tr key={animal.name}>
-                <td>{animal.name}</td>
-                <td>{animal.type}</td>
-                <td>{animal.descrip}</td>
-                <td>{animal.age}</td>
-              </tr>
-            );
-          })}
-        </tbody>
+        <Tbody filteredAnimals={filteredAnimals}></Tbody>
       </table>
     </div>
   );
