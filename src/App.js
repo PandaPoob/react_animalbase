@@ -1,6 +1,6 @@
 import data from "./animals.json";
 import React, { useState } from "react";
-import ToggleCell from "./ToggleCell";
+import ToggleCell from "./components/ToggleCell";
 import Tbody from "./components/Tbody";
 
 function clean(arr) {

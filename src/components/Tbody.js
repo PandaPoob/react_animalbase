@@ -1,28 +1,17 @@
 import Animal from "./Animal";
 
 export default function Tbody({ filteredAnimals }) {
-  let starAnimals = filteredAnimals.map((a) => {
+  //gives all objects in my array property starred
+  /*  let starAnimals = filteredAnimals.map((a) => {
     a.starred = false;
     return a;
-  });
-  console.log(starAnimals);
+  }); */
+  //console.log(starAnimals);
   return (
     <tbody className="Tbody">
-      {starAnimals.map((animal) => (
+      {filteredAnimals.map((animal) => (
         <Animal key={animal.name} animal={animal} />
       ))}
     </tbody>
   );
 }
-
-/*  filteredAnimals.map((animal) => {
-    return (
-      <tr key={animal.name}>
-        <td>{animal.name}</td>
-        <td>{animal.type}</td>
-        <td>{animal.descrip}</td>
-        <td>{animal.age}</td>
-      </tr>
-    );
-  });
- */
