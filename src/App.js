@@ -11,12 +11,13 @@ function clean(arr) {
       descrip,
       type,
       age: animal.age,
+      starred:false
     };
   });
 }
 
 function App() {
-  const animals = clean(data);
+  const [animals, setAnimals] = useState(clean(data));
   //console.log(animals);
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("name");
@@ -27,10 +28,32 @@ function App() {
       ? animals
       : animals.filter((animal) => animal.type === filter);
 
+  
+  const copy = JSON.parse(JSON.stringify(filteredAnimals))
+  function compare(a, b) {
+    if (a[sort] > b[sort]) {
+      return -1;
+    }
+    if (a[sort] < b[sort]) {
+      return 1;
+    }
+    // a must be equal to b
+    return 0;
+  }
+  function compare2(a, b) {
+    if (a[sort] < b[sort]) {
+      return -1;
+    }
+    if (a[sort] > b[sort]) {
+      return 1;
+    }
+    // a must be equal to b
+    return 0;
+  }
   if (sortDir === "asc") {
-    filteredAnimals.sort((a, b) => a[sort] > b[sort]);
+    copy.sort((a, b) => compare);
   } else {
-    filteredAnimals.sort((a, b) => a[sort] < b[sort]);
+    copy.sort((a, b) => compare2);
   }
 
   return (
@@ -73,7 +96,7 @@ function App() {
             />
           </tr>
         </thead>
-        <Tbody filteredAnimals={filteredAnimals}></Tbody>
+        <Tbody filteredAnimals={copy} setAnimals={setAnimals}></Tbody>
       </table>
     </div>
   );
