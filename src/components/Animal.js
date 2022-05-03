@@ -1,7 +1,7 @@
-import { useState } from "react";
+//import { useState } from "react";
 
 export default function Animal(props) {
-  const [starred, setStar] = useState(false);
+  //const [starred, setStar] = useState(false);
   //right now starred is FALSE
   function toggle(){
     //() => setStar((old) => !old)
