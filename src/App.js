@@ -31,6 +31,7 @@ function App() {
   
   const copy = JSON.parse(JSON.stringify(filteredAnimals))
   function compare(a, b) {
+    console.log(a,b)
     if (a[sort] > b[sort]) {
       return -1;
     }
@@ -40,20 +41,11 @@ function App() {
     // a must be equal to b
     return 0;
   }
-  function compare2(a, b) {
-    if (a[sort] < b[sort]) {
-      return -1;
-    }
-    if (a[sort] > b[sort]) {
-      return 1;
-    }
-    // a must be equal to b
-    return 0;
-  }
+
   if (sortDir === "asc") {
-    copy.sort((a, b) => compare);
+    copy.sort(compare);
   } else {
-    copy.sort((a, b) => compare2);
+    copy.sort((a,b)=>compare(b,a));
   }
 
   return (
